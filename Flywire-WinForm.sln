@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flywire-WinForm", "Flywire-WinForm\Flywire-WinForm.csproj", "{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug NET2|Any CPU = Debug NET2|Any CPU
+		Debug NO_ENGINE NET2|Any CPU = Debug NO_ENGINE NET2|Any CPU
+		Debug NO_ENGINE|Any CPU = Debug NO_ENGINE|Any CPU
+		Debug SWIG LINUX|Any CPU = Debug SWIG LINUX|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		Release NO_ENGINE|Any CPU = Release NO_ENGINE|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug NET2|Any CPU.ActiveCfg = Debug NET2|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug NET2|Any CPU.Build.0 = Debug NET2|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug NO_ENGINE NET2|Any CPU.ActiveCfg = Debug NO_ENGINE NET2|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug NO_ENGINE NET2|Any CPU.Build.0 = Debug NO_ENGINE NET2|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug NO_ENGINE|Any CPU.ActiveCfg = Debug NO_ENGINE|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug NO_ENGINE|Any CPU.Build.0 = Debug NO_ENGINE|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug SWIG LINUX|Any CPU.ActiveCfg = Debug SWIG LINUX|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug SWIG LINUX|Any CPU.Build.0 = Debug SWIG LINUX|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Release NO_ENGINE|Any CPU.ActiveCfg = Release NO_ENGINE|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Release NO_ENGINE|Any CPU.Build.0 = Release NO_ENGINE|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF889362-2CAA-4A1C-AC84-09B58A71A6F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
