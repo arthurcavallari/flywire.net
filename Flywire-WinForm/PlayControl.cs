@@ -70,15 +70,32 @@ namespace Flywire_WinForm
             {
                 SkipTrack();
             }
-            if (CurrentSound == null || CurrentTrack == null) return 0;
-            SongTracker.Value = (int)CurrentSound.PlayPosition / ((int)CurrentTrack.Value.PlayLength / 100);
-            return CurrentSound.PlayPosition;
+            if (IsPlaying)
+            {
+                if (CurrentSound == null) return 0;
+                SongTracker.Value = (int)CurrentSound.PlayPosition / ((int)CurrentSound.PlayLength / 100);
+                return CurrentSound.PlayPosition;
+            }
+            else
+            {
+                if (CurrentTrack == null) return 0;
+                SongTracker.Value = (int)CurrentTrack.Value.PlayPosition / ((int)CurrentTrack.Value.PlayLength / 100);
+                return CurrentTrack.Value.PlayPosition;
+            }
         }
 
         public uint getPlayLength()
         {
-            if (CurrentTrack == null) return 0;
-            return CurrentTrack.Value.PlayLength;
+            if (IsPlaying)
+            {
+                if (CurrentSound == null) return 0;
+                return CurrentSound.PlayLength;
+            }
+            else
+            {
+                if (CurrentTrack == null) return 0;
+                return CurrentTrack.Value.PlayLength;
+            }
         }
 
         public void ToggleButtons()
@@ -94,7 +111,7 @@ namespace Flywire_WinForm
             {
                 PlayButton.Enabled = (Playlist.Count() > 0);
                 StopButton.Enabled = false;
-                SkipButton.Enabled = false;
+                SkipButton.Enabled = (Playlist.Count() > 0);
                 RecueButton.Enabled = (Playlist.Count() > 0);
                 SongTracker.Value = 0;
             }
@@ -135,11 +152,23 @@ namespace Flywire_WinForm
 
         public void SkipTrack()
         {
-            IsPlaying = true;
-            CurrentTrack.Value.PlayPosition = CurrentSound.PlayPosition;
+            //CurrentTrack.Value.PlayPosition = CurrentSound.PlayPosition;
+            if (CurrentTrack == null) return;
             Playlist.TotalPlayLength -= CurrentTrack.Value.PlayLength;
             CurrentTrack = CurrentTrack.Next;
-            PlayTrack();
+            if (IsPlaying)
+            {
+                PlayTrack(); // plays new track
+            }
+            else
+            {
+                Playlist.UpdateTrackSelection();
+                if (CurrentTrack == null)
+                {
+                    IsPlaying = false;
+                    Playlist.Clear();
+                }
+            }
             //ToggleButtons();
         }
 
@@ -148,9 +177,10 @@ namespace Flywire_WinForm
             // Start from the beginning, reset all times
             IsPlaying = false;
             CurrentTrack = Playlist.MediaList.Tracks.First;
+            CurrentSound = null; // engine.LoadFile(CurrentTrack.Value.FullPath);
             PlayButton.Enabled = (Playlist.Count() > 0);
             StopButton.Enabled = false;
-            SkipButton.Enabled = false;
+            SkipButton.Enabled = (Playlist.Count() > 0);
             RecueButton.Enabled = (Playlist.Count() > 0);
             // reset song tracker
             SongTracker.Value = 0; 

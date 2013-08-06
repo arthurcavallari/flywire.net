@@ -362,6 +362,8 @@ namespace Flywire_WinForm
             if (!lvPlaylist.SelectedIndices.Contains(PlaylistMedia.currentIndex))
             {
                 lvPlaylist.Items[PlaylistMedia.currentIndex].Selected = true;
+                lvPlaylist.Select(); // attempting to make the new selection show... for some reason its not repainting
+                lvPlaylist.Refresh();
             }
         }
 
