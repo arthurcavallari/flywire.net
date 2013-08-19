@@ -29,6 +29,8 @@ using Source = NET4.IrrKlang.ISoundSource;
 using SoundStopEvent = NET4.IrrKlang.ISoundStopEventReceiver;
 using StopEventCause = NET4.IrrKlang.StopEventCause;
 #endif
+using System.IO;
+using System.Diagnostics;
 
 namespace Flywire_WinForm
 {
@@ -51,6 +53,8 @@ namespace Flywire_WinForm
         public Form1()
         {
             InitializeComponent();
+                   
+            
             try
             {
                 engine = new EngineWrapper();
@@ -85,6 +89,8 @@ namespace Flywire_WinForm
             PlaylistMedia = new PlaylistMediaCollection(engine, lvPlaylist, lblTotalPlayLength, PlayerControl);
             
         }
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -268,7 +274,7 @@ namespace Flywire_WinForm
                 catch (Exception e)
                 {
                     // TODO: Log error to file
-                    Console.WriteLine("ERROR at updateGUI(): " + e.ToString());
+                    Program.LogWrite("MainForm::updateGUI(): " + e.ToString());
                     answer = "00:00:00";
                 }
                 lblTotalPlayLength.Text = answer;
@@ -359,11 +365,14 @@ namespace Flywire_WinForm
 
         private void maintainPlaylistSelection()
         {
-            if (!lvPlaylist.SelectedIndices.Contains(PlaylistMedia.currentIndex))
+            if (lvPlaylist.Items.Count > 0)
             {
-                lvPlaylist.Items[PlaylistMedia.currentIndex].Selected = true;
-                lvPlaylist.Select(); // attempting to make the new selection show... for some reason its not repainting
-                lvPlaylist.Refresh();
+                if (!lvPlaylist.SelectedIndices.Contains(PlaylistMedia.currentIndex))
+                {
+                    lvPlaylist.Items[PlaylistMedia.currentIndex].Selected = true;
+                    lvPlaylist.Select(); // attempting to make the new selection show... for some reason its not repainting
+                    lvPlaylist.Refresh();
+                }
             }
         }
 

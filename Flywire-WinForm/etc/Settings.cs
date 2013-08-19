@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 #if !NOT_NET4
 using System.Linq;
@@ -63,6 +64,16 @@ namespace Flywire_WinForm
                 int p = (int)Environment.OSVersion.Platform;
                 return (p == 4) || (p == 6) || (p == 128);
             }
+        }
+
+        public static void checkPaths()
+        {
+            if (!Directory.Exists(Settings.AutoMediaPath)) Directory.CreateDirectory(Settings.AutoMediaPath);
+            if (!Directory.Exists(Settings.ShowMediaPath)) Directory.CreateDirectory(Settings.ShowMediaPath);
+            if (!Directory.Exists(Settings.StationMediaPath)) Directory.CreateDirectory(Settings.StationMediaPath);
+            if (!Directory.Exists(Settings.ScheduledMediaPath)) Directory.CreateDirectory(Settings.ScheduledMediaPath);
+            if (!Directory.Exists(Settings.SchedulePath)) Directory.CreateDirectory(Settings.SchedulePath);
+            if (!Directory.Exists(Settings.LogPath)) Directory.CreateDirectory(Settings.LogPath);
         }
     }
 }

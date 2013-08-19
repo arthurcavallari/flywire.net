@@ -27,10 +27,18 @@ namespace Flywire_WinForm
         public void FindScheduledTracks()
         {
             if (String.IsNullOrEmpty(Settings.SchedulePath)) return;
+#if NOT_NET4
+            string[] scheduleFiles = null;
+#else
+            IEnumerable<string> scheduleFiles = null;
+#endif
+
             // Read file name from directory
             Regex re = new Regex(@"^\d{4}-\d{2}-\d{2} \d{2}-\d{2}-\d{2};.*", RegexOptions.Compiled);
+            try
+            {
 #if NOT_NET4
-            var scheduleFiles = Directory.GetFiles(Settings.SchedulePath);
+            scheduleFiles = Directory.GetFiles(Settings.SchedulePath);
             for (int i = 0; i < scheduleFiles.Length; ++i)
             {
                 scheduleFiles[i] = Path.GetFileName(scheduleFiles[i]);
@@ -41,8 +49,16 @@ namespace Flywire_WinForm
                 }
             }
 #else
-            var scheduleFiles = Directory.EnumerateFiles(Settings.SchedulePath).Where(f => re.IsMatch(Path.GetFileName(f))).ToList();
+                scheduleFiles = Directory.EnumerateFiles(Settings.SchedulePath).Where(f => re.IsMatch(Path.GetFileName(f))).ToList();
 #endif
+            }
+            catch (Exception e)
+            {
+                string msg = "ScheduledMediaCollection::FindScheduledTracks(): Error while listing files at {" + Settings.SchedulePath + "}.\n" + e.ToString();
+                Program.LogWrite(msg);
+                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             Regex reFilename = new Regex(@";.*");
             Regex reDateTime = new Regex(@"^\d{4}-\d{2}-\d{2} \d{2}-\d{2}-\d{2};.*");
 
@@ -62,8 +78,9 @@ namespace Flywire_WinForm
                     }
                     catch (Exception e)
                     {
-                        // TODO: Write to log if schedule format is wrong
-                        Console.WriteLine(e.ToString());
+                        string msg = "ScheduledMediaCollection::FindScheduledTracks(): " + e.ToString();
+                        Program.LogWrite(msg);
+                        MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 //MediaList.AddTrack(currentFile);
@@ -118,12 +135,17 @@ namespace Flywire_WinForm
                 else
                     announcementDateTime = DateTime.MinValue;
 #else
-                announcementDateTime = Schedule.First().ScheduledDateTime;
+                if (Schedule.Count > 0)
+                    announcementDateTime = Schedule.First().ScheduledDateTime;
+                else
+                    announcementDateTime = DateTime.MinValue;
 #endif
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                string msg = "ScheduledMediaCollection::UpdateTrackDisplay(): " + e.ToString();
+                Program.LogWrite(msg);
+                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

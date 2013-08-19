@@ -37,12 +37,22 @@ namespace Flywire_WinForm
 
         public void ReloadShowNames()
         {
+            IEnumerable<string> files = null;
+            try
+            {
 #if NOT_NET4
-            var files = Directory.GetDirectories(Location);
+                files = Directory.GetDirectories(Location);
 #else
-            var files = Directory.EnumerateDirectories(Location);
+                files = Directory.EnumerateDirectories(Location);
 #endif
-            
+            }
+            catch (Exception e)
+            {
+                string msg = "ShowMedia::ReloadShowNames(): Error while listing directories.\n" + e.ToString();
+                Program.LogWrite(msg);
+                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             ShowNames.Clear();
             ShowMedia.Clear();
             

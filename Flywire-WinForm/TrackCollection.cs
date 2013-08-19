@@ -37,14 +37,24 @@ namespace Flywire_WinForm
         {
             if (String.IsNullOrEmpty(Location)) return;
             // Read file name from directory
+            IEnumerable<string> files = null;
+            try
+            {
 #if NOT_NET4
-            var files = Directory.GetFiles(Location);
+                files = Directory.GetFiles(Location);
 #else
-            var files = Directory.EnumerateFiles(Location);
+                files = Directory.EnumerateFiles(Location);
 #endif
+            }
+            catch (Exception e)
+            {
+                string msg = "TrackCollection::ReloadTracks(): Error while listing files at {" + this.Location + "}.\n" + e.ToString();
+                Program.LogWrite(msg);
+                MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                return;
+            }
 
-            //string[] files = files2.ToArray();
-            //MessageBox.Show(Location + files.Count().ToString());
             foreach (string currentFile in files)
             {
                 try
@@ -53,7 +63,10 @@ namespace Flywire_WinForm
                 }
                 catch (UnknownAudioFormatException e)
                 {
-                    Console.WriteLine(e.ToString());
+                    string msg = e.ToString();
+                    Program.LogWrite(msg);
+                    MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
         }

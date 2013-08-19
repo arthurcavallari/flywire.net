@@ -194,8 +194,12 @@
     <Content Include="ikpMP3.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Libraries\irrKlang.NET2.0.dll" />
-    <None Include="Libraries\irrKlang.NET4.dll" />
+    <None Include="Libraries\irrKlang.NET2.0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Libraries\irrKlang.NET4.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ctlactive.png" />

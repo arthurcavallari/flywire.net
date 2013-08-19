@@ -28,6 +28,7 @@ using Sound = NET4.IrrKlang.ISound;
 using Source = NET4.IrrKlang.ISoundSource;
 using SoundStopEvent = NET4.IrrKlang.ISoundStopEventReceiver;
 using StopEventCause = NET4.IrrKlang.StopEventCause;
+using System.Diagnostics;
 #endif
 /* END SoundEngine definition */
 
@@ -216,6 +217,7 @@ namespace Flywire_WinForm
                         default:
                             // herp derp, this should not happen.. 
                             // TODO: Log to error file, try to play next track if available
+                            Program.LogWrite("PlayControl::SoundStopEvent.OnSoundStopped(): Invalid reason => " + reason.ToString());
                             break;
                     }
             /*    }));

@@ -31,26 +31,31 @@ namespace Flywire_WinForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "",
-            "00:00:00"}, -1);
             this.grpShowMedia = new System.Windows.Forms.GroupBox();
+            this.lvShowMedia = new Flywire_WinForm.ListViewEx();
+            this.lvColHeaderTrackName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvColHeaderDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmbShowList = new System.Windows.Forms.ComboBox();
             this.grpStationMedia = new System.Windows.Forms.GroupBox();
+            this.lvStationMedia = new Flywire_WinForm.ListViewEx();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpScheduledMedia = new System.Windows.Forms.GroupBox();
             this.chkAutoAdd = new System.Windows.Forms.CheckBox();
             this.btnAddAll = new System.Windows.Forms.Button();
             this.btnReject = new System.Windows.Forms.Button();
             this.lblTimeToPlay = new System.Windows.Forms.Label();
-            this.picPlayBtn = new System.Windows.Forms.PictureBox();
+            this.lvScheduledMedia = new Flywire_WinForm.ListViewEx();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.picRecueBtn = new System.Windows.Forms.PictureBox();
-            this.picSkipBtn = new System.Windows.Forms.PictureBox();
-            this.picStopBtn = new System.Windows.Forms.PictureBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.grpPlaylist = new System.Windows.Forms.GroupBox();
+            this.lvPlaylist = new Flywire_WinForm.ListViewEx();
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chkRepeat = new System.Windows.Forms.CheckBox();
             this.chkCue = new System.Windows.Forms.CheckBox();
             this.btnClearAll = new System.Windows.Forms.Button();
@@ -59,31 +64,23 @@ namespace Flywire_WinForm
             this.lblTime = new System.Windows.Forms.Label();
             this.tmrUpdateGUI = new System.Windows.Forms.Timer(this.components);
             this.tmrUpdateSchedule = new System.Windows.Forms.Timer(this.components);
-            this.lvShowMedia = new Flywire_WinForm.ListViewEx();
-            this.lvColHeaderTrackName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvColHeaderDuration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvStationMedia = new Flywire_WinForm.ListViewEx();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvScheduledMedia = new Flywire_WinForm.ListViewEx();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvPlaylist = new Flywire_WinForm.ListViewEx();
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.picRecueBtn = new System.Windows.Forms.PictureBox();
+            this.picSkipBtn = new System.Windows.Forms.PictureBox();
+            this.picStopBtn = new System.Windows.Forms.PictureBox();
+            this.picPlayBtn = new System.Windows.Forms.PictureBox();
             this.grpShowMedia.SuspendLayout();
             this.grpStationMedia.SuspendLayout();
             this.grpScheduledMedia.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPlayBtn)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRecueBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSkipBtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picStopBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.grpPlaylist.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picRecueBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSkipBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStopBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // grpShowMedia
@@ -98,6 +95,37 @@ namespace Flywire_WinForm
             this.grpShowMedia.TabIndex = 0;
             this.grpShowMedia.TabStop = false;
             this.grpShowMedia.Text = "Show Media";
+            // 
+            // lvShowMedia
+            // 
+            this.lvShowMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvShowMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvColHeaderTrackName,
+            this.lvColHeaderDuration});
+            this.lvShowMedia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lvShowMedia.FullRowSelect = true;
+            this.lvShowMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvShowMedia.Location = new System.Drawing.Point(3, 58);
+            this.lvShowMedia.MultiSelect = false;
+            this.lvShowMedia.Name = "lvShowMedia";
+            this.lvShowMedia.Size = new System.Drawing.Size(562, 171);
+            this.lvShowMedia.TabIndex = 1;
+            this.lvShowMedia.UseCompatibleStateImageBehavior = false;
+            this.lvShowMedia.View = System.Windows.Forms.View.Details;
+            this.lvShowMedia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvShowMedia_MouseClick);
+            // 
+            // lvColHeaderTrackName
+            // 
+            this.lvColHeaderTrackName.Text = "Track Name";
+            this.lvColHeaderTrackName.Width = 470;
+            // 
+            // lvColHeaderDuration
+            // 
+            this.lvColHeaderDuration.Text = "00:00:00";
+            this.lvColHeaderDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.lvColHeaderDuration.Width = 70;
             // 
             // cmbShowList
             // 
@@ -125,6 +153,35 @@ namespace Flywire_WinForm
             this.grpStationMedia.TabIndex = 1;
             this.grpStationMedia.TabStop = false;
             this.grpStationMedia.Text = "Station Media";
+            // 
+            // lvStationMedia
+            // 
+            this.lvStationMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvStationMedia.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvStationMedia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lvStationMedia.FullRowSelect = true;
+            this.lvStationMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvStationMedia.Location = new System.Drawing.Point(3, 26);
+            this.lvStationMedia.MultiSelect = false;
+            this.lvStationMedia.Name = "lvStationMedia";
+            this.lvStationMedia.Size = new System.Drawing.Size(562, 203);
+            this.lvStationMedia.TabIndex = 1;
+            this.lvStationMedia.UseCompatibleStateImageBehavior = false;
+            this.lvStationMedia.View = System.Windows.Forms.View.Details;
+            this.lvStationMedia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvStationMedia_MouseClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Track Name";
+            this.columnHeader1.Width = 470;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "00:00:00";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader2.Width = 70;
             // 
             // grpScheduledMedia
             // 
@@ -187,20 +244,36 @@ namespace Flywire_WinForm
             this.lblTimeToPlay.TabIndex = 2;
             this.lblTimeToPlay.Text = "11:40 PM";
             // 
-            // picPlayBtn
+            // lvScheduledMedia
             // 
-            this.picPlayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.picPlayBtn.Enabled = false;
-            this.picPlayBtn.Image = global::Flywire_WinForm.Properties.Resources.playdisabled;
-            this.picPlayBtn.Location = new System.Drawing.Point(6, 3);
-            this.picPlayBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.picPlayBtn.Name = "picPlayBtn";
-            this.picPlayBtn.Size = new System.Drawing.Size(48, 48);
-            this.picPlayBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picPlayBtn.TabIndex = 4;
-            this.picPlayBtn.TabStop = false;
-            this.picPlayBtn.EnabledChanged += new System.EventHandler(this.picPlayBtn_EnabledChanged);
-            this.picPlayBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picPlayBtn_MouseClick);
+            this.lvScheduledMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvScheduledMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lvScheduledMedia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lvScheduledMedia.FullRowSelect = true;
+            this.lvScheduledMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvScheduledMedia.Location = new System.Drawing.Point(3, 64);
+            this.lvScheduledMedia.MultiSelect = false;
+            this.lvScheduledMedia.Name = "lvScheduledMedia";
+            this.lvScheduledMedia.Size = new System.Drawing.Size(562, 165);
+            this.lvScheduledMedia.TabIndex = 1;
+            this.lvScheduledMedia.UseCompatibleStateImageBehavior = false;
+            this.lvScheduledMedia.View = System.Windows.Forms.View.Details;
+            this.lvScheduledMedia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvScheduledMedia_MouseClick);
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Track Name";
+            this.columnHeader3.Width = 470;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "00:00:00";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader4.Width = 70;
             // 
             // tableLayoutPanel1
             // 
@@ -247,51 +320,6 @@ namespace Flywire_WinForm
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1142, 54);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
-            // picRecueBtn
-            // 
-            this.picRecueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.picRecueBtn.Enabled = false;
-            this.picRecueBtn.Image = global::Flywire_WinForm.Properties.Resources.recuedisabled;
-            this.picRecueBtn.Location = new System.Drawing.Point(186, 3);
-            this.picRecueBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.picRecueBtn.Name = "picRecueBtn";
-            this.picRecueBtn.Size = new System.Drawing.Size(48, 48);
-            this.picRecueBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picRecueBtn.TabIndex = 7;
-            this.picRecueBtn.TabStop = false;
-            this.picRecueBtn.EnabledChanged += new System.EventHandler(this.picRecueBtn_EnabledChanged);
-            this.picRecueBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picRecueBtn_MouseClick);
-            // 
-            // picSkipBtn
-            // 
-            this.picSkipBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.picSkipBtn.Enabled = false;
-            this.picSkipBtn.Image = global::Flywire_WinForm.Properties.Resources.skipdisabled;
-            this.picSkipBtn.Location = new System.Drawing.Point(126, 3);
-            this.picSkipBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.picSkipBtn.Name = "picSkipBtn";
-            this.picSkipBtn.Size = new System.Drawing.Size(48, 48);
-            this.picSkipBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picSkipBtn.TabIndex = 6;
-            this.picSkipBtn.TabStop = false;
-            this.picSkipBtn.EnabledChanged += new System.EventHandler(this.picSkipBtn_EnabledChanged);
-            this.picSkipBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picSkipBtn_MouseClick);
-            // 
-            // picStopBtn
-            // 
-            this.picStopBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.picStopBtn.Enabled = false;
-            this.picStopBtn.Image = global::Flywire_WinForm.Properties.Resources.stopdisabled;
-            this.picStopBtn.Location = new System.Drawing.Point(66, 3);
-            this.picStopBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
-            this.picStopBtn.Name = "picStopBtn";
-            this.picStopBtn.Size = new System.Drawing.Size(48, 48);
-            this.picStopBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.picStopBtn.TabIndex = 5;
-            this.picStopBtn.TabStop = false;
-            this.picStopBtn.EnabledChanged += new System.EventHandler(this.picStopBtn_EnabledChanged);
-            this.picStopBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picStopBtn_MouseClick);
-            // 
             // trackBar1
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -337,6 +365,44 @@ namespace Flywire_WinForm
             this.grpPlaylist.TabIndex = 3;
             this.grpPlaylist.TabStop = false;
             this.grpPlaylist.Text = "Playlist";
+            // 
+            // lvPlaylist
+            // 
+            this.lvPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvPlaylist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvPlaylist.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lvPlaylist.FullRowSelect = true;
+            this.lvPlaylist.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lvPlaylist.HideSelection = false;
+            this.lvPlaylist.Location = new System.Drawing.Point(3, 67);
+            this.lvPlaylist.MultiSelect = false;
+            this.lvPlaylist.Name = "lvPlaylist";
+            this.lvPlaylist.Size = new System.Drawing.Size(556, 466);
+            this.lvPlaylist.TabIndex = 1;
+            this.lvPlaylist.UseCompatibleStateImageBehavior = false;
+            this.lvPlaylist.View = System.Windows.Forms.View.Details;
+            this.lvPlaylist.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lvPlaylist_DrawItem);
+            this.lvPlaylist.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvPlaylist_ItemSelectionChanged);
+            this.lvPlaylist.Leave += new System.EventHandler(this.lvPlaylist_Leave);
+            this.lvPlaylist.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseClick);
+            this.lvPlaylist.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseDoubleClick);
+            this.lvPlaylist.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseDown);
+            this.lvPlaylist.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseDown);
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Track Name";
+            this.columnHeader5.Width = 470;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "00:00:00";
+            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader6.Width = 70;
             // 
             // chkRepeat
             // 
@@ -417,136 +483,65 @@ namespace Flywire_WinForm
             this.tmrUpdateSchedule.Interval = 1000;
             this.tmrUpdateSchedule.Tick += new System.EventHandler(this.tmrUpdateSchedule_Tick);
             // 
-            // lvShowMedia
+            // picRecueBtn
             // 
-            this.lvShowMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvShowMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lvColHeaderTrackName,
-            this.lvColHeaderDuration});
-            this.lvShowMedia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lvShowMedia.FullRowSelect = true;
-            this.lvShowMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvShowMedia.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.lvShowMedia.Location = new System.Drawing.Point(3, 58);
-            this.lvShowMedia.MultiSelect = false;
-            this.lvShowMedia.Name = "lvShowMedia";
-            this.lvShowMedia.Size = new System.Drawing.Size(562, 171);
-            this.lvShowMedia.TabIndex = 1;
-            this.lvShowMedia.UseCompatibleStateImageBehavior = false;
-            this.lvShowMedia.View = System.Windows.Forms.View.Details;
-            this.lvShowMedia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvShowMedia_MouseClick);
+            this.picRecueBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.picRecueBtn.Enabled = false;
+            this.picRecueBtn.Image = global::Flywire_WinForm.Properties.Resources.recuedisabled;
+            this.picRecueBtn.Location = new System.Drawing.Point(186, 3);
+            this.picRecueBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.picRecueBtn.Name = "picRecueBtn";
+            this.picRecueBtn.Size = new System.Drawing.Size(48, 48);
+            this.picRecueBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picRecueBtn.TabIndex = 7;
+            this.picRecueBtn.TabStop = false;
+            this.picRecueBtn.EnabledChanged += new System.EventHandler(this.picRecueBtn_EnabledChanged);
+            this.picRecueBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picRecueBtn_MouseClick);
             // 
-            // lvColHeaderTrackName
+            // picSkipBtn
             // 
-            this.lvColHeaderTrackName.Text = "Track Name";
-            this.lvColHeaderTrackName.Width = 470;
+            this.picSkipBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.picSkipBtn.Enabled = false;
+            this.picSkipBtn.Image = global::Flywire_WinForm.Properties.Resources.skipdisabled;
+            this.picSkipBtn.Location = new System.Drawing.Point(126, 3);
+            this.picSkipBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.picSkipBtn.Name = "picSkipBtn";
+            this.picSkipBtn.Size = new System.Drawing.Size(48, 48);
+            this.picSkipBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picSkipBtn.TabIndex = 6;
+            this.picSkipBtn.TabStop = false;
+            this.picSkipBtn.EnabledChanged += new System.EventHandler(this.picSkipBtn_EnabledChanged);
+            this.picSkipBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picSkipBtn_MouseClick);
             // 
-            // lvColHeaderDuration
+            // picStopBtn
             // 
-            this.lvColHeaderDuration.Text = "00:00:00";
-            this.lvColHeaderDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.lvColHeaderDuration.Width = 70;
+            this.picStopBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.picStopBtn.Enabled = false;
+            this.picStopBtn.Image = global::Flywire_WinForm.Properties.Resources.stopdisabled;
+            this.picStopBtn.Location = new System.Drawing.Point(66, 3);
+            this.picStopBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.picStopBtn.Name = "picStopBtn";
+            this.picStopBtn.Size = new System.Drawing.Size(48, 48);
+            this.picStopBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picStopBtn.TabIndex = 5;
+            this.picStopBtn.TabStop = false;
+            this.picStopBtn.EnabledChanged += new System.EventHandler(this.picStopBtn_EnabledChanged);
+            this.picStopBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picStopBtn_MouseClick);
             // 
-            // lvStationMedia
+            // picPlayBtn
             // 
-            this.lvStationMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.lvStationMedia.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvStationMedia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lvStationMedia.FullRowSelect = true;
-            this.lvStationMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvStationMedia.Location = new System.Drawing.Point(3, 26);
-            this.lvStationMedia.MultiSelect = false;
-            this.lvStationMedia.Name = "lvStationMedia";
-            this.lvStationMedia.Size = new System.Drawing.Size(562, 203);
-            this.lvStationMedia.TabIndex = 1;
-            this.lvStationMedia.UseCompatibleStateImageBehavior = false;
-            this.lvStationMedia.View = System.Windows.Forms.View.Details;
-            this.lvStationMedia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvStationMedia_MouseClick);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Track Name";
-            this.columnHeader1.Width = 470;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "00:00:00";
-            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader2.Width = 70;
-            // 
-            // lvScheduledMedia
-            // 
-            this.lvScheduledMedia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvScheduledMedia.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lvScheduledMedia.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lvScheduledMedia.FullRowSelect = true;
-            this.lvScheduledMedia.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvScheduledMedia.Location = new System.Drawing.Point(3, 64);
-            this.lvScheduledMedia.MultiSelect = false;
-            this.lvScheduledMedia.Name = "lvScheduledMedia";
-            this.lvScheduledMedia.Size = new System.Drawing.Size(562, 165);
-            this.lvScheduledMedia.TabIndex = 1;
-            this.lvScheduledMedia.UseCompatibleStateImageBehavior = false;
-            this.lvScheduledMedia.View = System.Windows.Forms.View.Details;
-            this.lvScheduledMedia.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvScheduledMedia_MouseClick);
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Track Name";
-            this.columnHeader3.Width = 470;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "00:00:00";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader4.Width = 70;
-            // 
-            // lvPlaylist
-            // 
-            this.lvPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvPlaylist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader5,
-            this.columnHeader6});
-            this.lvPlaylist.Font = new System.Drawing.Font("Arial", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lvPlaylist.FullRowSelect = true;
-            this.lvPlaylist.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lvPlaylist.HideSelection = false;
-            this.lvPlaylist.Location = new System.Drawing.Point(3, 67);
-            this.lvPlaylist.MultiSelect = false;
-            this.lvPlaylist.Name = "lvPlaylist";
-            this.lvPlaylist.Size = new System.Drawing.Size(556, 466);
-            this.lvPlaylist.TabIndex = 1;
-            this.lvPlaylist.UseCompatibleStateImageBehavior = false;
-            this.lvPlaylist.View = System.Windows.Forms.View.Details;
-            this.lvPlaylist.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lvPlaylist_DrawItem);
-            this.lvPlaylist.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.lvPlaylist_ItemSelectionChanged);
-            this.lvPlaylist.Leave += new System.EventHandler(this.lvPlaylist_Leave);
-            this.lvPlaylist.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseClick);
-            this.lvPlaylist.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseDoubleClick);
-            this.lvPlaylist.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseDown);
-            this.lvPlaylist.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvPlaylist_MouseDown);
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Track Name";
-            this.columnHeader5.Width = 470;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "00:00:00";
-            this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeader6.Width = 70;
+            this.picPlayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.picPlayBtn.Enabled = false;
+            this.picPlayBtn.Image = global::Flywire_WinForm.Properties.Resources.playdisabled;
+            this.picPlayBtn.Location = new System.Drawing.Point(6, 3);
+            this.picPlayBtn.Margin = new System.Windows.Forms.Padding(6, 3, 6, 3);
+            this.picPlayBtn.Name = "picPlayBtn";
+            this.picPlayBtn.Size = new System.Drawing.Size(48, 48);
+            this.picPlayBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picPlayBtn.TabIndex = 4;
+            this.picPlayBtn.TabStop = false;
+            this.picPlayBtn.EnabledChanged += new System.EventHandler(this.picPlayBtn_EnabledChanged);
+            this.picPlayBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.picPlayBtn_MouseClick);
             // 
             // Form1
             // 
@@ -564,18 +559,18 @@ namespace Flywire_WinForm
             this.grpStationMedia.ResumeLayout(false);
             this.grpScheduledMedia.ResumeLayout(false);
             this.grpScheduledMedia.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPlayBtn)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRecueBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSkipBtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picStopBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.grpPlaylist.ResumeLayout(false);
             this.grpPlaylist.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picRecueBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSkipBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picStopBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayBtn)).EndInit();
             this.ResumeLayout(false);
 
         }
