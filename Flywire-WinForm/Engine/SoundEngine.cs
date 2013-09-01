@@ -106,5 +106,87 @@ namespace Flywire_WinForm
         // ESEC_SOUND_STOPPED_BY_USER           // The sound stop event was fired because the sound was stopped by the user, calling ISound::stop().
         // ESEC_SOUND_STOPPED_BY_SOURCE_REMOVAL // The sound stop event was fired because the source of the sound was removed, for example because irrKlang was shut down or the user called ISoundEngine::removeSoundSource(). 
     }
+#elif NO_ENGINE
+    public class SoundEngine
+    {
+        public SoundEngine()
+        {
+           
+        }
+
+        internal Sound Play2D(string FilePath, bool playLooped = false, bool startPaused = false)
+        {
+            return new Sound();
+        }
+
+        internal Source AddSoundSourceFromFile(string FilePath)
+        {
+            return new Source();
+        }
+    }
+    public class Sound
+    {
+        public Sound()
+        {
+        }
+
+        internal void Stop()
+        {
+
+        }
+
+        public uint PlayPosition
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
+        public uint PlayLength
+        {
+            get
+            {
+                return 0;
+            }
+        }
+
+        public void setSoundStopEventReceiver(SoundStopEvent receiver)
+        {
+
+        }
+    }
+    public class Source
+    {
+        public Source()
+        {
+
+        }
+
+        public uint PlayLength
+        {
+            get
+            {
+                return 0;
+            }
+        }
+    }
+    // TODO: Add to c++ wrapper
+    public interface SoundStopEvent
+    {
+        void OnSoundStopped(Sound sound, StopEventCause reason, object userData);
+    }
+
+    public enum StopEventCause
+    {
+        SoundStoppedBySourceRemoval,            // The sound was stopped because its sound source was removed or the engine was shut down 
+        SoundStoppedByUser,                     // The sound was stopped because the user called ISound::stop(). 
+        SoundFinishedPlaying                    // The sound finished playing. 
+
+        // c++ library equivalents
+        // ESEC_SOUND_FINISHED_PLAYING          // The sound stop event was fired because the sound finished playing. 
+        // ESEC_SOUND_STOPPED_BY_USER           // The sound stop event was fired because the sound was stopped by the user, calling ISound::stop().
+        // ESEC_SOUND_STOPPED_BY_SOURCE_REMOVAL // The sound stop event was fired because the source of the sound was removed, for example because irrKlang was shut down or the user called ISoundEngine::removeSoundSource(). 
+    }
 #endif
 }

@@ -22,12 +22,14 @@ using Sound = NET2.IrrKlang.ISound;
 using Source = NET2.IrrKlang.ISoundSource;
 using SoundStopEvent = NET2.IrrKlang.ISoundStopEventReceiver;
 using StopEventCause = NET2.IrrKlang.StopEventCause;
-#elif !SWIG && !NOT_NET4
+#elif !SWIG && !NOT_NET4 && !NO_ENGINE
 using SoundEngine = NET4.IrrKlang.ISoundEngine;
 using Sound = NET4.IrrKlang.ISound;
 using Source = NET4.IrrKlang.ISoundSource;
 using SoundStopEvent = NET4.IrrKlang.ISoundStopEventReceiver;
 using StopEventCause = NET4.IrrKlang.StopEventCause;
+#elif NO_ENGINE
+
 #endif
 /* END SoundEngine definition */
 

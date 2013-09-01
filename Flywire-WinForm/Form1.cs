@@ -22,7 +22,7 @@ using Sound = NET2.IrrKlang.ISound;
 using Source = NET2.IrrKlang.ISoundSource;
 using SoundStopEvent = NET2.IrrKlang.ISoundStopEventReceiver;
 using StopEventCause = NET2.IrrKlang.StopEventCause;
-#elif !SWIG && !NOT_NET4
+#elif !SWIG && !NOT_NET4 && !NO_ENGINE
 using SoundEngine = NET4.IrrKlang.ISoundEngine;
 using Sound = NET4.IrrKlang.ISound;
 using Source = NET4.IrrKlang.ISoundSource;
@@ -53,8 +53,19 @@ namespace Flywire_WinForm
         public Form1()
         {
             InitializeComponent();
-                   
-            
+
+#if !SWIG && NOT_NET4 && !NO_ENGINE
+            this.Text += " - Engine: NET2.IrrKlang - .NET Version: " + Environment.Version.ToString();
+#elif !SWIG && !NOT_NET4 && !NO_ENGINE
+            this.Text += " - Engine: NET4.IrrKlang - .NET Version: " + Environment.Version.ToString();
+#elif NO_ENGINE
+            this.Text += " - Engine: NO ENGINE - .NET Version: " + Environment.Version.ToString();
+#elif SWIG && NOT_NET4
+            this.Text += " - Engine: SWIG / NET2.IrrKlang - .NET Version: " + Environment.Version.ToString();
+#elif SWIG && !NOT_NET4
+            this.Text += " - Engine: SWIG / NET4.IrrKlang - .NET Version: " + Environment.Version.ToString();
+#endif
+
             try
             {
                 engine = new EngineWrapper();
@@ -259,7 +270,8 @@ namespace Flywire_WinForm
         private void updateGUI()
         {
             lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
-            if (PlaylistMedia.currentIndex >= 0)
+
+            if (PlaylistMedia != null && PlaylistMedia.currentIndex >= 0)
             {
                 string answer;
                 try
@@ -439,7 +451,8 @@ namespace Flywire_WinForm
             
             // Set the global int variable (gListView1LostFocusItem) to
             // the index of the selected item that just lost focus
-            gListView1LostFocusItem = lvPlaylist.FocusedItem.Index;
+            if (lvPlaylist.FocusedItem != null)
+                gListView1LostFocusItem = lvPlaylist.FocusedItem.Index;
         }
 
         private void cmbShowList_Enter(object sender, EventArgs e)

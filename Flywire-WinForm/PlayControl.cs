@@ -22,7 +22,7 @@ using Sound = NET2.IrrKlang.ISound;
 using Source = NET2.IrrKlang.ISoundSource;
 using SoundStopEvent = NET2.IrrKlang.ISoundStopEventReceiver;
 using StopEventCause = NET2.IrrKlang.StopEventCause;
-#elif !SWIG && !NOT_NET4
+#elif !SWIG && !NOT_NET4 && !NO_ENGINE
 using SoundEngine = NET4.IrrKlang.ISoundEngine;
 using Sound = NET4.IrrKlang.ISound;
 using Source = NET4.IrrKlang.ISoundSource;
@@ -74,12 +74,14 @@ namespace Flywire_WinForm
             if (IsPlaying)
             {
                 if (CurrentSound == null) return 0;
+                if (CurrentSound.PlayLength == 0) return 0;
                 SongTracker.Value = (int)CurrentSound.PlayPosition / (int)(Math.Ceiling((double)CurrentSound.PlayLength / 100));
                 return CurrentSound.PlayPosition;
             }
             else
             {
                 if (CurrentTrack == null) return 0;
+                if (CurrentTrack.Value.PlayLength == 0) return 0;
                 SongTracker.Value = (int)CurrentTrack.Value.PlayPosition / (int)(Math.Ceiling((double)CurrentTrack.Value.PlayLength / 100));
                 return CurrentTrack.Value.PlayPosition;
             }
