@@ -45,7 +45,7 @@ namespace Flywire_WinForm
                     ".aac", 
                     ".ogg",
                     ".wma",
-                    ".m4a",
+                    //".m4a",
                     ".mod",
                     ".it",
                     ".xm",
@@ -53,6 +53,7 @@ namespace Flywire_WinForm
                     ".mod",
                     ".s3m",
                     ".xm"
+                    //".acc"
                 }; 
             }
         } // end AcceptedFiles

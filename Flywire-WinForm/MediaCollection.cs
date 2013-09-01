@@ -16,6 +16,8 @@ namespace Flywire_WinForm
         public string Location { get; private set; }
         public EngineWrapper engine { get; set; }
 
+        
+
         public MediaCollection(EngineWrapper engine, string CollectionName, string CollectionLocation, ListView TrackDisplayList, bool AutoLoadTracks = true)
         {
             this.engine = engine;

@@ -74,13 +74,13 @@ namespace Flywire_WinForm
             if (IsPlaying)
             {
                 if (CurrentSound == null) return 0;
-                SongTracker.Value = (int)CurrentSound.PlayPosition / ((int)CurrentSound.PlayLength / 100);
+                SongTracker.Value = (int)CurrentSound.PlayPosition / (int)(Math.Ceiling((double)CurrentSound.PlayLength / 100));
                 return CurrentSound.PlayPosition;
             }
             else
             {
                 if (CurrentTrack == null) return 0;
-                SongTracker.Value = (int)CurrentTrack.Value.PlayPosition / ((int)CurrentTrack.Value.PlayLength / 100);
+                SongTracker.Value = (int)CurrentTrack.Value.PlayPosition / (int)(Math.Ceiling((double)CurrentTrack.Value.PlayLength / 100));
                 return CurrentTrack.Value.PlayPosition;
             }
         }

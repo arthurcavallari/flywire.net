@@ -65,7 +65,7 @@ namespace Flywire_WinForm
                 {
                     string msg = e.ToString();
                     Program.LogWrite(msg);
-                    MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
