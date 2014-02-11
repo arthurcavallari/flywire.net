@@ -50,9 +50,7 @@ namespace Flywire_WinForm
                     ".it",
                     ".xm",
                     ".s3d",
-                    ".mod",
-                    ".s3m",
-                    ".xm"
+                    ".s3m"
                     //".acc"
                 }; 
             }
